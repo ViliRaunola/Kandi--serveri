@@ -7,6 +7,9 @@ const config = require('./config/database');
 const app = express();
 app.use(bodyParser.json());
 
+const api = require('./routes/api');
+app.use('/api', api);
+
 //Connecting to a databse
 mongoose.connect(config.database);
 
@@ -19,6 +22,7 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', () => {
     console.log(`Connecting to the database: ${config.database} failed`);
 });
+
 
 //Main page route
 app.get('/', (req, res) => {
