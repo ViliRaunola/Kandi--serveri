@@ -4,7 +4,7 @@ const Wifi = require('../models/Wifi')
 const Bluetooth = require('../models/Bluetooth')
 
 //Route for saving the data
-router.post('/save', (req, res, next) => {
+router.post('/save/wifi', (req, res, next) => {
     const options = {upsert: true};
 
     //Saving the wifi data   
@@ -23,20 +23,26 @@ router.post('/save', (req, res, next) => {
         }, 
         options, (err) => {
             if(err) {
+                console.log(err)
                 res.json({success: false});
                 return err;
             }
-        })
-    })
+            console.log('Saved data to databse')
+            res.json({success: true})
+        });
+    });
+});
 
+router.post('/save/bluetooth', (req, res, next) => {
+    const options = {upsert: true};
 
-    
     //Saving the bluetooth data
     bluetooth_list = req.body.bluetooth;
     bluetooth_list.forEach(data => {
         Bluetooth.findOne({MAC_Address: data.MAC_Address} ,(err, found) => {
             if(err){
                 res.json({success: false});
+                console.log(err)
                 return err;
             }
             if(found){
@@ -45,6 +51,7 @@ router.post('/save', (req, res, next) => {
                 found.save(err => {
                     if(err){
                         res.json({success: false});
+                        console.log(err)
                         return err;
                     }  
                 })
@@ -60,16 +67,17 @@ router.post('/save', (req, res, next) => {
                 (err) => {
                     if(err){
                         res.json({success: false});
+                        console.log(err)
                         return err;
                     }
+                    console.log('Saved data to databse')
+                    res.json({success: true})
                 });
             }
         });
     })
 
-    console.log('Saved data to databse')
-    res.json({success: true})
-})
+});
 
 router.get('/data', (req, res, next) => {
     Bluetooth.find({}, (err, bt_datas) => {
