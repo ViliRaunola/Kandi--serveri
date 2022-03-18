@@ -71,7 +71,7 @@ router.post('/save', (req, res, next) => {
     res.json({success: true})
 })
 
-router.get('get/data', (req, res, next) => {
+router.get('/data', (req, res, next) => {
     bt_data = Bluetooth.find();
     wifi_data = Wifi.find();
 
