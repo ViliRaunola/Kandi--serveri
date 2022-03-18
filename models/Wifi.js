@@ -8,7 +8,7 @@ let wifiSchema = new Schema({
     Last_Seen: {type: String},
     Signal_Strength: {type: Number},
     ESSID: {type: String},
-    BSSID: {type: Number},
+    BSSID: {type: String},
     Probed_ESSID: {type: String},
     Is_AP: {type: Boolean},
 },{timestamps: true});

@@ -7,6 +7,8 @@ const Bluetooth = require('../models/Bluetooth')
 router.post('/save/wifi', (req, res, next) => {
     const options = {upsert: true};
 
+    //console.log(req.body)
+
     //Saving the wifi data   
     wifi_list = req.body.wifi;
     wifi_list.forEach(data => {
@@ -27,13 +29,13 @@ router.post('/save/wifi', (req, res, next) => {
                 res.json({success: false});
                 return err;
             }
-            console.log('Saved data to databse')
-            res.json({success: true})
         });
     });
+    console.log('Saved data to databse')
+    res.json({success: true})
 });
 
-router.post('/save/bluetooth', (req, res, next) => {
+router.post('/save/bt', (req, res, next) => {
     const options = {upsert: true};
 
     //Saving the bluetooth data
@@ -70,13 +72,12 @@ router.post('/save/bluetooth', (req, res, next) => {
                         console.log(err)
                         return err;
                     }
-                    console.log('Saved data to databse')
-                    res.json({success: true})
                 });
             }
         });
     })
-
+    console.log('Saved data to databse')
+    res.json({success: true})
 });
 
 router.get('/data', (req, res, next) => {
