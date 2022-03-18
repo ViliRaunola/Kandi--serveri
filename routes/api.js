@@ -7,7 +7,7 @@ const Bluetooth = require('../models/Bluetooth')
 router.post('/save', (req, res, next) => {
     const options = {upsert: true};
 
-    //Saving the wifi data 
+    //Saving the wifi data   
     wifi_list = req.body.wifi;
     wifi_list.forEach(data => {
         Wifi.findOneAndUpdate({
