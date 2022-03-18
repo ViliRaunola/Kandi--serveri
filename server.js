@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 1234;
 const config = require('./config/database');
+const mongo_uri = process.env.MONGODB_URI || config.database;
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,16 +12,16 @@ const api = require('./routes/api');
 app.use('/api', api);
 
 //Connecting to a databse
-mongoose.connect(config.database);
+mongoose.connect(mongo_uri);
 
 //When connection is established
 mongoose.connection.on('connected', () => {
-    console.log(`Connecting to the database': ${config.database} was successfull`);
+    console.log(`Connecting to the database': ${mongo_uri} was successfull`);
 });
 
 //On Error
 mongoose.connection.on('error', () => {
-    console.log(`Connecting to the database: ${config.database} failed`);
+    console.log(`Connecting to the database: ${mongo_uri} failed`);
 });
 
 
