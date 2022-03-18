@@ -3,7 +3,7 @@ const router = express.Router();
 const Wifi = require('../models/Wifi')
 const Bluetooth = require('../models/Bluetooth')
 
-//Route for saving the data
+//Route for saving the data 
 router.post('/save/wifi', (req, res, next) => {
     const options = {upsert: true};
 
