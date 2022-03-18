@@ -72,10 +72,13 @@ router.post('/save', (req, res, next) => {
 })
 
 router.get('/data', (req, res, next) => {
-    bt_data = Bluetooth.find();
-    wifi_data = Wifi.find();
-
-    res.json({wifi: wifi_data, bt: bt_data})
+    Bluetooth.find({}, (err, bt_datas) => {
+        if(err) throw err;
+        Wifi.find({}, (err, wifi_datas) => {
+            if(err) throw err
+            return res.json({wifi: wifi_datas, bt: bt_datas});
+        })
+    })
 })
 
 
