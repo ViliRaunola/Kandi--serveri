@@ -58,6 +58,7 @@ router.post('/save/wifi', (req, res, next) => {
                 })
             }else{
                 Wifi.create({
+                    MAC_Address: data.MAC_Address,
                     First_Seen: data.First_Seen, 
                     Last_Seen: data.Last_Seen,
                     Signal_Strength: data.Signal_Strength,
