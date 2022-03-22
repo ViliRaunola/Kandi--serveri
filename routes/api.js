@@ -65,7 +65,8 @@ router.post('/save/wifi', (req, res, next) => {
                     ESSID: data.ESSID,
                     BSSID: data.BSSID,
                     Probed_ESSID: data.Probed_ESSID,
-                    Is_AP: data.Is_AP
+                    Is_AP: data.Is_AP,
+                    Manufacturer: data.Manufacturer
                 },
                 (err) => {
                     if(err){

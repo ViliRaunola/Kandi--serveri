@@ -11,6 +11,7 @@ let wifiSchema = new Schema({
     BSSID: {type: String},
     Probed_ESSID: {type: String},
     Is_AP: {type: Boolean},
+    Manufacturer: {type: String},
 },{timestamps: true});
 
 module.exports = mongoose.model('Wifi', wifiSchema);
