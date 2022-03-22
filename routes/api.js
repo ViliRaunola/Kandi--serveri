@@ -121,7 +121,7 @@ router.post('/save/bt', (req, res, next) => {
                         console.log(err)
                         return err;
                     }  
-                })
+                }) 
             }else{
                 Bluetooth.create({
                     MAC_Address: data.MAC_Address,
