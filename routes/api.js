@@ -81,7 +81,7 @@ router.post('/save/wifi', (req, res, next) => {
     console.log('Saved data to databse')
     return res.json({success: true})
 });
-
+ 
 
 router.post('/save/bt', (req, res, next) => {
 
