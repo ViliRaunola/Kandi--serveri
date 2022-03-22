@@ -53,6 +53,11 @@ router.post('/save/wifi', (req, res, next) => {
                     found.Last_Seen = data.Last_Seen;
                     found.Signal_Strength = data.Signal_Strength;
                 }   
+                var date_first_seen_database = new Date(found.First_Seen)
+                var date_first_seen_received = new Date(data.First_Seen)
+                if(date_first_seen_database > date_first_seen_received){
+                    found.First_Seen = data.First_Seen
+                }
                 found.save(err => {
                     if(err){
                         res.json({success: false});
@@ -104,6 +109,11 @@ router.post('/save/bt', (req, res, next) => {
                 if(date_last_seen_database < date_last_seen_received){
                     found.Last_Seen = data.Last_Seen;
                     found.RSSI = data.RSSI;
+                }
+                var date_first_seen_database = new Date(found.First_Seen)
+                var date_first_seen_received = new Date(data.First_Seen)
+                if(date_first_seen_database > date_first_seen_received){
+                    found.First_Seen = data.First_Seen
                 }
                 found.save(err => {
                     if(err){
