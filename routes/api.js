@@ -155,5 +155,19 @@ router.get('/data', (req, res, next) => {
     })
 })
 
+router.get('/data/wifi', (req, res, next) => {
+    Wifi.find({}, (err, wifi_datas) => {
+        if(err) throw err
+        return res.json({wifi_datas});
+    })
+})
+
+router.get('/data/bt', (req, res, next) => {
+    Bluetooth.find({}, (err, bt_datas) => {
+        if(err) throw err
+        return res.json({bt_datas});
+    })
+})
+
 
 module.exports = router;
