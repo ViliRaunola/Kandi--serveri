@@ -143,7 +143,7 @@ router.post('/save/bt', (req, res, next) => {
     })
     console.log('Saved data to databse')
     return res.json({success: true})
-});
+}); 
 
 router.get('/data', (req, res, next) => {
     Bluetooth.find({}, (err, bt_datas) => {
