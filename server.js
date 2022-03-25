@@ -13,7 +13,7 @@ const api = require('./routes/api');
 app.use('/api', api);
 
 var corsOptions = {
-    origin: 'https://kandi-visualisointi.herokuapp.com/',
+    origin: '*',
 };
 app.use(cors(corsOptions));
 
