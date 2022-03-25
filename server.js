@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 1234;
 const config = require('./config/database');
+const cors = require('cors')
 const mongo_uri = process.env.MONGODB_URI || config.database;
 
 const app = express();
@@ -10,6 +11,13 @@ app.use(bodyParser.json());
 
 const api = require('./routes/api');
 app.use('/api', api);
+
+var corsOptions = {
+    origin: 'https://kandi-visualisointi.herokuapp.com/',
+};
+app.use(cors(corsOptions));
+
+app.listen(port)
 
 //Connecting to a databse
 mongoose.connect(mongo_uri);
