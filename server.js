@@ -31,10 +31,8 @@ app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 });
 
-var corsOptions = {
-    origin: 'https://kandi-visualisointi.herokuapp.com',
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 //Creating the server
 app.listen(port, () =>{
