@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 1234;
 const config = require('./config/database');
-const cors = require('cors')
 const mongo_uri = process.env.MONGODB_URI || config.database;
 
 const app = express();
@@ -11,9 +10,6 @@ app.use(bodyParser.json());
 
 const api = require('./routes/api');
 app.use('/api', api);
-
-
-app.listen(port)
 
 //Connecting to a databse
 mongoose.connect(mongo_uri);
@@ -37,4 +33,4 @@ app.get('/', (req, res) => {
 //Creating the server
 app.listen(port, () =>{
     console.log(`Server is listening on port: ${port}`);
-}); 
+});
