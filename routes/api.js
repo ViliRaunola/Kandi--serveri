@@ -144,7 +144,7 @@ router.post('/save/bt', (req, res, next) => {
     return res.json({success: true})
 }); 
 
-router.get('/data', (req, res, next) => {
+router.get('/data', (req, res, next) => { 
     res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com');
     Bluetooth.find({}, (err, bt_datas) => {
         if(err) throw err;
