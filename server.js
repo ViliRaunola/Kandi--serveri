@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 var corsOptions = {
-    origin: 'https://kandi-visualisointi.herokuapp.com/',
+    origin: 'https://kandi-visualisointi.herokuapp.com',
 };
 app.use(cors(corsOptions));
 
