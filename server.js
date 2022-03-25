@@ -12,10 +12,6 @@ app.use(bodyParser.json());
 const api = require('./routes/api');
 app.use('/api', api);
 
-var corsOptions = {
-    origin: '*',
-};
-app.use(cors(corsOptions));
 
 app.listen(port)
 
