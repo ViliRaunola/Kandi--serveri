@@ -145,7 +145,7 @@ router.post('/save/bt', (req, res, next) => {
 }); 
 
 router.get('/data', (req, res, next) => {
-    res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com/');
+    res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com/overall');
     Bluetooth.find({}, (err, bt_datas) => {
         if(err) throw err;
         Wifi.find({}, (err, wifi_datas) => {
@@ -156,7 +156,7 @@ router.get('/data', (req, res, next) => {
 })
 
 router.get('/data/wifi', (req, res, next) => {
-    res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com/');
+    res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com/wifi');
     Wifi.find({}, (err, wifi_datas) => {
         if(err) throw err
         return res.json({wifi: wifi_datas});
@@ -164,7 +164,7 @@ router.get('/data/wifi', (req, res, next) => {
 })
 
 router.get('/data/bt', (req, res, next) => {
-    res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com/');
+    res.set('Access-Control-Allow-Origin', 'https://kandi-visualisointi.herokuapp.com/bluetooth');
     Bluetooth.find({}, (err, bt_datas) => {
         if(err) throw err
         return res.json({bt: bt_datas});
