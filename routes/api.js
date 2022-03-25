@@ -93,7 +93,6 @@ router.post('/save/wifi', (req, res, next) => {
  
 
 router.post('/save/bt', (req, res, next) => {
-
     //Saving the bluetooth data
     var bluetooth_list = req.body.bluetooth;
     bluetooth_list.forEach(data => {
@@ -146,6 +145,7 @@ router.post('/save/bt', (req, res, next) => {
 }); 
 
 router.get('/data', (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     Bluetooth.find({}, (err, bt_datas) => {
         if(err) throw err;
         Wifi.find({}, (err, wifi_datas) => {
@@ -156,6 +156,7 @@ router.get('/data', (req, res, next) => {
 })
 
 router.get('/data/wifi', (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     Wifi.find({}, (err, wifi_datas) => {
         if(err) throw err
         return res.json({wifi: wifi_datas});
@@ -163,6 +164,7 @@ router.get('/data/wifi', (req, res, next) => {
 })
 
 router.get('/data/bt', (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     Bluetooth.find({}, (err, bt_datas) => {
         if(err) throw err
         return res.json({bt: bt_datas});
