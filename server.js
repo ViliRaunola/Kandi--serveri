@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 1234;
 const config = require('./config/database');
 const mongo_uri = process.env.MONGODB_URI || config.database;
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
@@ -29,6 +30,11 @@ mongoose.connection.on('error', () => {
 app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 });
+
+var corsOptions = {
+    origin: 'https://kandi-visualisointi.herokuapp.com/',
+};
+app.use(cors(corsOptions));
 
 //Creating the server
 app.listen(port, () =>{
